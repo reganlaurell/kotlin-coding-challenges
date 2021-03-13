@@ -3,17 +3,16 @@ package com.igorwojda.string.decapitalizeconst
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
-@ExperimentalStdlibApi
 private fun decapitalizeConst(str: String): String {
-    return str.split("_").forEachIndexed { index, value ->
-        when (index) {
-            0 -> value.toLowerCase()
-            else -> println(value.replaceFirst(value.first(), value.first().toUpperCase()) )
+    return str.split("_").mapIndexed { index, s ->
+        if(index == 0) {
+            s.toLowerCase()
+        } else {
+            s.toLowerCase().capitalize()
         }
-    }.toString()
+    }.joinToString("")
 }
 
-@ExperimentalStdlibApi
 private class Test {
     @Test
     fun `"FOOBAR" return null`() {
