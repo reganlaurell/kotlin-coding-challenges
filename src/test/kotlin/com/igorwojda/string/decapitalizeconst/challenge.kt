@@ -3,15 +3,10 @@ package com.igorwojda.string.decapitalizeconst
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
-private fun decapitalizeConst(str: String): String {
-    return str.split("_").mapIndexed { index, s ->
-        if(index == 0) {
-            s.toLowerCase()
-        } else {
-            s.toLowerCase().capitalize()
-        }
-    }.joinToString("")
-}
+private fun decapitalizeConst(str: String): String =
+    str.split("_").map {
+        it.toLowerCase().capitalize()
+    }.joinToString("").decapitalize()
 
 private class Test {
     @Test
