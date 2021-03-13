@@ -3,9 +3,10 @@ package com.igorwojda.string.decapitalizeconst
 import org.amshove.kluent.shouldBeEqualTo
 import org.junit.jupiter.api.Test
 
-private fun decapitalizeConst(str: String): String {
-    TODO("not implemented")
-}
+private fun decapitalizeConst(str: String): String =
+    str.split("_").map {
+        it.toLowerCase().capitalize()
+    }.joinToString("").decapitalize()
 
 private class Test {
     @Test
